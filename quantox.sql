@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2021 at 10:55 AM
+-- Generation Time: Oct 24, 2021 at 02:28 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -37,8 +37,8 @@ CREATE TABLE `schools` (
 --
 
 INSERT INTO `schools` (`id`, `name`) VALUES
-(11, 'CSM'),
-(12, 'CSMB');
+(1, 'CSM'),
+(2, 'CSMB');
 
 -- --------------------------------------------------------
 
@@ -58,17 +58,17 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`id`, `name`, `grades`, `school_id`) VALUES
-(28, 'Dragoslav Jankovic', '10,6,6,8', 1),
-(29, 'Petar Janjusevic', '10,8,5,8', 2),
-(30, 'Filip Djordjevic', '6,7,6', 1),
-(31, 'Mateja Ivanovic', '9,8,6', 2),
-(32, 'Sanja Djukanovic', '9,10', 1),
-(33, 'Doroteja Mitrovic', '7,5,10,5', 2),
-(34, 'Pavle Jacovic', '8,7', 1),
-(35, 'Nikola Djordjevic', '6', 1),
-(36, 'Mirko Zecic', '7,8', 2),
-(37, 'Jovana Jankovic', '5,10,7', 2),
-(38, 'Sasa Jevremovic', '6,9', 1);
+(1, 'Dragoslav Jankovic', '6,6,6', 1),
+(2, 'Petar Janjusevic', '6', 2),
+(3, 'Filip Djordjevic', '7,9,10,9', 1),
+(4, 'Mateja Ivanovic', '9', 2),
+(5, 'Sanja Djukanovic', '9,9', 1),
+(6, 'Doroteja Mitrovic', '6,6,8', 2),
+(7, 'Pavle Jacovic', '10,6', 1),
+(8, 'Nikola Djordjevic', '8,9', 1),
+(9, 'Mirko Zecic', '9,10,8', 2),
+(10, 'Jovana Jankovic', '10,10', 2),
+(11, 'Sasa Jevremovic', '8,6', 1);
 
 --
 -- Indexes for dumped tables
@@ -94,13 +94,13 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `schools`
 --
 ALTER TABLE `schools`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,7 +1,8 @@
 <?php
 
 require_once 'classes/Database.php';
-require_once 'classes/School.php';
+require_once 'classes/CMSSchool.php';
+require_once 'classes/CMSBSchool.php';
 require_once 'classes/Student.php';
 
 function createRandomGrades() {
@@ -9,14 +10,14 @@ function createRandomGrades() {
   $numOfGrades = rand(1, 4);
 
   for ($i = 0; $i < $numOfGrades; $i++) {
-    array_push($grades, rand(5, 10));
+    array_push($grades, rand(6, 10));
   }
 
   return $grades;
 }
 
-$school = new School(1, 'CSM');
-$school2 = new School(2, 'CSMB');
+$school = new CMSSchool(1, 'CSM');
+$school2 = new CMSBSchool(2, 'CSMB');
 
 $student = new Student(0, 'Dragoslav Jankovic', createRandomGrades(), $school);
 $student2 = new Student(0, 'Petar Janjusevic', createRandomGrades(), $school2);
