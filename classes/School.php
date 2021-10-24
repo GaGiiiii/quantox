@@ -1,18 +1,14 @@
 <?php
 
 
-class Student {
+class School {
 
   private $id;
   private $name;
-  private $grades;
-  private $school;
 
-  public function __construct($id, $name, $grades, School $school) {
+  public function __construct($id, $name) {
     $this->id = $id;
     $this->name = $name;
-    $this->grades = $grades;
-    $this->school = $school;
   }
 
   public function __get($property) {
