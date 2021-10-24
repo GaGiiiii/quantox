@@ -24,9 +24,14 @@ function calculatePassCSM($student) {
 function calculatePassCSMB($student) {
   $grades = $student['students.grades'];
   $grades = explode(',', $grades);
+
+  if (count($grades) > 2) {
+    array_splice($grades, array_search(min($grades), $grades), 1);
+  }
+
   $avg = array_sum($grades) / count($grades);
 
-  return $avg >= 7 ? ['avg' => $avg, 'pass' => 'Pass'] : ['avg' => $avg, 'pass' => 'Fail'];
+  return max($grades) > 8 ? ['avg' => $avg, 'pass' => 'Pass'] : ['avg' => $avg, 'pass' => 'Fail'];
 }
 
 $student = Database::getInstance()->getStudent(clean($_GET['id']));
@@ -51,6 +56,8 @@ switch ($school['schools.name']) {
     $result['final'] = $passArr['pass'];
 
     $result = json_encode($result);
+    echo $result;
+
     break;
   case 'CSMB':
     $passArr = calculatePassCSMB($student);
@@ -61,10 +68,11 @@ switch ($school['schools.name']) {
     $result['average'] = $passArr['avg'];
     $result['final'] = $passArr['pass'];
 
+    // $result = xmlrpc_encode($result);
     $result = json_encode($result);
+    echo $result;
+
     break;
   default:
     echo 'Error';
 }
-
-echo $result;
