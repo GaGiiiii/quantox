@@ -1,7 +1,7 @@
 <?php
 
 
-class School {
+abstract class School {
 
   private $id;
   private $name;
@@ -28,4 +28,6 @@ class School {
   public function encodeToJSON() {
     return json_encode(get_object_vars($this));
   }
+
+  abstract protected function calculatePass($grades);
 }
