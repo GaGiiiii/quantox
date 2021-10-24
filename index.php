@@ -2,4 +2,4 @@
 
 require_once 'classes/Database.php';
 
-Database::getInstance()->truncateDB();
+// Database::getInstance()->truncateDB();
