@@ -6,6 +6,8 @@ abstract class School {
   private $id;
   private $name;
 
+  abstract protected function calculatePass($grades);
+
   public function __construct($id, $name) {
     $this->id = $id;
     $this->name = $name;
@@ -28,6 +30,4 @@ abstract class School {
   public function encodeToJSON() {
     return json_encode(get_object_vars($this));
   }
-
-  abstract protected function calculatePass($grades);
 }
