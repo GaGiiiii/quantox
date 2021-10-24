@@ -14,7 +14,7 @@ function clean($input) {
 }
 
 function calculatePassCSM($student) {
-  $grades = $student['students.grades'];
+  $grades = $student->__get('grades');
   $grades = explode(',', $grades);
   $avg = array_sum($grades) / count($grades);
 
@@ -22,7 +22,7 @@ function calculatePassCSM($student) {
 }
 
 function calculatePassCSMB($student) {
-  $grades = $student['students.grades'];
+  $grades = $student->__get('grades');
   $grades = explode(',', $grades);
 
   if (count($grades) > 2) {
@@ -41,17 +41,17 @@ if (!$student) {
   die();
 }
 
-$school = Database::getInstance()->getSchool($student['students.school_id']);
+$school = Database::getInstance()->getSchool($student->__get('school')->__get('id'));
 $pass = false;
 $result = [];
 
-switch ($school['schools.name']) {
+switch ($school->__get('name')) {
   case 'CSM':
     $passArr = calculatePassCSM($student);
 
-    $result['student_id'] = $student['students.id'];
-    $result['name'] = $student['students.name'];
-    $result['grades'] = $student['students.grades'];
+    $result['student_id'] = $student->__get('id');
+    $result['name'] = $student->__get('name');
+    $result['grades'] = $student->__get('grades');
     $result['average'] = $passArr['avg'];
     $result['final'] = $passArr['pass'];
 
@@ -62,9 +62,9 @@ switch ($school['schools.name']) {
   case 'CSMB':
     $passArr = calculatePassCSMB($student);
 
-    $result['student_id'] = $student['students.id'];
-    $result['name'] = $student['students.name'];
-    $result['grades'] = $student['students.grades'];
+    $result['student_id'] = $student->__get('id');
+    $result['name'] = $student->__get('name');
+    $result['grades'] = $student->__get('grades');
     $result['average'] = $passArr['avg'];
     $result['final'] = $passArr['pass'];
 

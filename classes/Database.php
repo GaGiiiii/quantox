@@ -118,9 +118,16 @@ class Database extends PDO {
         ':id' => $id,
       ));
 
-      $student = $query->fetch(PDO::FETCH_ASSOC);
+      $row = $query->fetch(PDO::FETCH_ASSOC);
 
-      return $student;
+      if ($row) {
+        $school = $this->getSchool($row['students.school_id']);
+        $student = new Student($row['students.id'], $row['students.name'], $row['students.grades'], $school);
+
+        return $student;
+      }
+
+      return false;
     } catch (PDOException $e) {
       echo "<p class='alert mb-0 alert-danger'>PDO EXCEPTION: " . $e->getMessage() . "</p>";
 
@@ -135,9 +142,15 @@ class Database extends PDO {
         ':id' => $id,
       ));
 
-      $school = $query->fetch(PDO::FETCH_ASSOC);
+      $row = $query->fetch(PDO::FETCH_ASSOC);
 
-      return $school;
+      if ($row) {
+        $school = new School($row['schools.id'], $row['schools.name']);
+
+        return $school;
+      }
+
+      return false;
     } catch (PDOException $e) {
       echo "<p class='alert mb-0 alert-danger'>PDO EXCEPTION: " . $e->getMessage() . "</p>";
 
