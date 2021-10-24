@@ -1,0 +1,4 @@
+RewriteEngine on  
+RewriteRule ^students/([0-9]+)$ students.php?id=$1 [NC,L]
+
+

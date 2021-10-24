@@ -110,4 +110,52 @@ class Database extends PDO {
       return true;
     }
   }
+
+  public function getStudent($id) {
+    try {
+      $query = Database::getInstance()->getConnection()->prepare("SELECT * FROM `students` WHERE id = :id");
+      $query->execute(array(
+        ':id' => $id,
+      ));
+
+      $student = $query->fetch(PDO::FETCH_ASSOC);
+
+      return $student;
+    } catch (PDOException $e) {
+      echo "<p class='alert mb-0 alert-danger'>PDO EXCEPTION: " . $e->getMessage() . "</p>";
+
+      return false;
+    }
+  }
+
+  public function getSchool($id) {
+    try {
+      $query = Database::getInstance()->getConnection()->prepare("SELECT * FROM `schools` WHERE id = :id");
+      $query->execute(array(
+        ':id' => $id,
+      ));
+
+      $school = $query->fetch(PDO::FETCH_ASSOC);
+
+      return $school;
+    } catch (PDOException $e) {
+      echo "<p class='alert mb-0 alert-danger'>PDO EXCEPTION: " . $e->getMessage() . "</p>";
+
+      return false;
+    }
+  }
+
+  public function truncateDB() {
+    try {
+      $query = Database::getInstance()->getConnection()->prepare("TRUNCATE TABLE `students`");
+      $query->execute();
+
+      $query = Database::getInstance()->getConnection()->prepare("TRUNCATE TABLE `schools`");
+      $query->execute();
+    } catch (PDOException $e) {
+      echo "<p class='alert mb-0 alert-danger'>PDO EXCEPTION: " . $e->getMessage() . "</p>";
+
+      return false;
+    }
+  }
 }
