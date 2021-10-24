@@ -6,7 +6,7 @@ class Student {
   private $id;
   private $name;
   private $grades;
-  private $school;
+  private School $school;
 
   public function __construct($id, $name, $grades, School $school) {
     $this->id = $id;

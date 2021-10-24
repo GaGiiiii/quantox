@@ -1,10 +1,12 @@
 <?php
 
 
-class School {
+abstract class School {
 
   private $id;
   private $name;
+
+  abstract protected function calculatePass($grades);
 
   public function __construct($id, $name) {
     $this->id = $id;

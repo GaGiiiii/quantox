@@ -1,5 +1,8 @@
 <?php
 
+require_once 'CMSSchool.php';
+require_once 'CMSBSchool.php';
+
 class Database extends PDO {
   private $host; // Host
   private $db_name; // DB Name
@@ -145,7 +148,11 @@ class Database extends PDO {
       $row = $query->fetch(PDO::FETCH_ASSOC);
 
       if ($row) {
-        $school = new School($row['schools.id'], $row['schools.name']);
+        if ($row['schools.name'] === 'CSM') {
+          $school = new CMSSchool($row['schools.id'], $row['schools.name']);
+        } else {
+          $school = new CMSBSchool($row['schools.id'], $row['schools.name']);
+        }
 
         return $school;
       }
